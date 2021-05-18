@@ -626,10 +626,178 @@ const calculateTotalBalance = users => {
 
 
 
+/*33. Задача. Общее количество друзей
+Задание
+Дополни функцию getTotalFriendCount(users) так, чтобы она считала и возвращала общее количество друзей (свойство friends) всех пользователей из массива users.
+Тесты
+    Объявлена переменная getTotalFriendCount.
+    Переменной getTotalFriendCount присвоена стрелочная функция с параметром (users).
+    Для перебора параметра users используется метод reduce().
+    Вызов функции с указанным массивом пользователей возвращает число 14
+    Вызов функции со случайными, но валидными аргументами, возвращает правильное значение.*/
+// Пиши код ниже этой строки
+const getTotalFriendCount = users => {
+  const totalFriends = users.reduce ((total, user) => total + user.friends.length, 0);
+  return totalFriends;
+};
+// Пиши код выше этой строки
+
+
+
+/*34 Метод sort()
+Задание
+Дополни код так, чтобы в переменной ascendingReleaseDates получилась отсортированная по возрастанию копия массива releaseDates, а в переменной alphabeticalAuthors копия массива имён авторов authors отсортированная в по алфавиту.
+Тесты
+    Объявлена переменная releaseDates.
+    Значение переменной releaseDates это массив [2016, 1967, 2008, 1984, 1973, 2012, 1997].
+    Объявлена переменная authors.
+    Значение переменной authors это массив ['Ли Танит', 'Бернард Корнуэлл', 'Роберт Шекли', 'Федор Достоевский'].
+    Объявлена переменная ascendingReleaseDates.
+    Значение переменной ascendingReleaseDates это массив [1967, 1973, 1984, 1997, 2008, 2012, 2016].
+    Объявлена переменная alphabeticalAuthors.
+    Значение переменной alphabeticalAuthors это массив ['Бернард Корнуэлл', 'Ли Танит', 'Роберт Шекли', 'Федор Достоевский'].
+    Использован метод sort().*/
+const releaseDates = [2016, 1967, 2008, 1984, 1973, 2012, 1997];
+const authors = [
+  'Ли Танит',
+  'Бернард Корнуэлл',
+  'Роберт Шекли',
+  'Федор Достоевский'
+];
+// Пиши код ниже этой строки
+
+const ascendingReleaseDates = [...releaseDates].sort((currentDates, nextDates) => {
+  return currentDates - nextDates;
+});
+
+const alphabeticalAuthors = [...authors].sort((currentAuthors, nextAuthors) => {
+  const result = currentAuthors[0] > nextAuthors[0];
   
-const totalFriend = users.reduce ((allFriends, user) => {
-  allFriends.push(...user.friends);
+  if (result) {
+    return 1;
+  }
   
-  
-  return totalFriend;
-}, []);
+    if (!result) {
+    return -1;
+  }
+});
+
+
+
+/*35. Свой порядок сортировки чисел
+Задание
+Онлайн бибилиотеке необходимо отображать книги сортированные по дате издания, по её возрастанию или убыванию. Дополни код так, чтобы в переменной ascendingReleaseDates получилась отсортированная по возрастанию копия массива releaseDates, а в переменной descendingReleaseDates копия отсортированная по убыванию.
+Тесты
+    Объявлена переменная releaseDates.
+    Значение переменной releaseDates это массив [2016, 1967, 2008, 1984, 1973, 2012, 1997].
+    Объявлена переменная ascendingReleaseDates.
+    Значение переменной ascendingReleaseDates это массив [1967, 1973, 1984, 1997, 2008, 2012, 2016].
+    Объявлена переменная descendingReleaseDates.
+    Значение переменной descendingReleaseDates это массив [2016, 2012, 2008, 1997, 1984, 1973, 1967].
+    Использован метод sort().*/
+const releaseDates = [2016, 1967, 2008, 1984, 1973, 2012, 1997];
+// Пиши код ниже этой строки
+
+const ascendingReleaseDates = [...releaseDates].sort((currentDates, nextDates) => {
+  return currentDates - nextDates;
+});
+
+const descendingReleaseDates = [...releaseDates].sort((currentDates, nextDates) => {
+  return nextDates - currentDates;
+});
+
+
+
+/*36. Свой порядок сортировки строк
+Задание
+Онлайн бибилиотеке необходимо отображать книги отсортированные по автору, в алфавитном и обратном алфавитном порядке. Дополни код так, чтобы в переменной authorsInAlphabetOrder получилась отсортированная по алфавиту копия массива authors, а в переменной authorsInReversedOrder копия отсортированная в обратном алфавитном порядке.
+Тесты
+    Объявлена переменная authors.
+    Значение переменной authors это массив ['Ли Танит', 'Бернард Корнуэлл', 'Роберт Шекли', 'Федор Достоевский', 'Говард Лавкрафт'].
+    Объявлена переменная authorsInAlphabetOrder.
+    Значение переменной authorsInAlphabetOrder это массив ['Бернард Корнуэлл', 'Говард Лавкрафт', 'Ли Танит', 'Роберт Шекли', 'Федор Достоевский'].
+    Объявлена переменная authorsInReversedOrder.
+    Значение переменной authorsInReversedOrder это массив ['Федор Достоевский', 'Роберт Шекли', 'Ли Танит', 'Говард Лавкрафт', 'Бернард Корнуэлл'].
+    Использован метод sort().*/
+const authors = [
+  'Ли Танит',
+  'Бернард Корнуэлл',
+  'Роберт Шекли',
+  'Федор Достоевский',
+  'Говард Лавкрафт'
+];
+// Пиши код ниже этой строки
+
+const authorsInAlphabetOrder = [...authors].sort((currentAuthors, nextAuthors) => {
+const result = currentAuthors[0] > nextAuthors[0];
+
+if (result) {
+  return 1;
+}
+
+  if (!result) {
+  return -1;
+}
+});
+
+const authorsInReversedOrder = [...authors].sort((currentAuthors, nextAuthors) => {
+const result = currentAuthors[0] > nextAuthors[0];
+
+if (result) {
+  return -1;
+}
+
+  if (!result) {
+  return 1;
+}
+});
+
+
+/*
+const books = [
+  { title: 'Последнее королевство', author: 'Бернард Корнуэлл', rating: 8.38 },
+  { title: 'На берегу спокойных вод', author: 'Роберт Шекли', rating: 8.51 },
+  { title: 'Сон смешного человека', author: 'Федор Достоевский', rating: 7.75 },
+  { title: 'Красна как кровь', author: 'Ли Танит', rating: 7.94 },
+  { title: 'Враг Божий', author: 'Бернард Корнуэлл', rating: 8.67 }
+];
+// Пиши код ниже этой строки
+
+const sortedByAuthorName = [...books].sort((currentAuthors, nextAuthors) => {
+const result = currentAuthors.author[0] > nextAuthors.author[0];
+
+if (result) {
+  return 1;
+}
+
+  if (!result) {
+  return -1;
+}
+  return;
+});
+console.log(sortedByAuthorName);
+const sortedByReversedAuthorName = [...books].sort((currentAuthors, nextAuthors) => {
+const result = currentAuthors.author[0] > nextAuthors.author[0];
+
+if (result) {
+  return -1;
+}
+
+  if (!result) {
+  return 1;
+}
+});
+
+const sortedByAscendingRating = [...books].sort((currentRating, nextRating) => {
+  return currentRating.rating - nextRating.rating;
+});
+
+const sortedByDescentingRating = [...books].sort((currentRating, nextRating) => {
+  return nextRating.rating - currentRating.rating;
+});
+
+*/
+
+
+
+
