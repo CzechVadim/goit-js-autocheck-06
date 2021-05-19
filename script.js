@@ -459,7 +459,7 @@ const secondArray = [17, 61, 23];
 const thirdArray = [17, 26, 94, 61, 36, 23, 18];
 // Пиши код ниже этой строки
 
-const eachElementInFirstIsEven = firstArray.every(firstArray => );
+const eachElementInFirstIsEven = firstArray.every(firstArray => firstArray % 2 == 0);
 const eachElementInFirstIsOdd = firstArray.every(firstArray => firstArray % 2 !== 0);
 
 const eachElementInSecondIsEven = secondArray.every(secondArray => secondArray % 2 == 0);
@@ -753,7 +753,25 @@ if (result) {
 });
 
 
-/*
+/*37. Сортировка объектов
+Задание
+Дополни код так, чтобы:
+    В переменной sortedByAuthorName получился массив книг отсортированный по имени автора в алфавитном порядке.
+    В переменной sortedByReversedAuthorName получился массив книг отсортированный по имени автора в обратном алфавитном порядке.
+    В переменной sortedByAscendingRating получился массив книг отсортированный по возрастанию рейтинга.
+    В переменной sortedByDescentingRating получился массив книг отсортированный по убыванию рейтинга.
+Тесты
+    Объявлена переменная books.
+    Значение переменной books это исходный массив объектов книг.
+    Объявлена переменная sortedByAuthorName.
+    Значение переменной sortedByAuthorName это массив книг отсортированный по имени автора в алфавитном порядке.
+    Объявлена переменная sortedByReversedAuthorName.
+    Значение переменной sortedByReversedAuthorName это массив книг отсортированный по имени автора в обратном алфавитном порядке.
+    Объявлена переменная sortedByAscendingRating.
+    Значение переменной sortedByAscendingRating это массив книг отсортированный по возрастанию рейтинга.
+    Объявлена переменная sortedByDescentingRating.
+    Значение переменной sortedByDescentingRating это массив книг отсортированный по убыванию рейтинга.
+    Для перебора массива books используется метод sort().*/
 const books = [
   { title: 'Последнее королевство', author: 'Бернард Корнуэлл', rating: 8.38 },
   { title: 'На берегу спокойных вод', author: 'Роберт Шекли', rating: 8.51 },
@@ -763,30 +781,13 @@ const books = [
 ];
 // Пиши код ниже этой строки
 
-const sortedByAuthorName = [...books].sort((currentAuthors, nextAuthors) => {
-const result = currentAuthors.author[0] > nextAuthors.author[0];
+const sortedByAuthorName = [...books].sort(
+  (currentAuthor, nextAuthor) => currentAuthor.author.localeCompare(nextAuthor.author)
+);
 
-if (result) {
-  return 1;
-}
-
-  if (!result) {
-  return -1;
-}
-  return;
-});
-console.log(sortedByAuthorName);
-const sortedByReversedAuthorName = [...books].sort((currentAuthors, nextAuthors) => {
-const result = currentAuthors.author[0] > nextAuthors.author[0];
-
-if (result) {
-  return -1;
-}
-
-  if (!result) {
-  return 1;
-}
-});
+const sortedByReversedAuthorName = [...books].sort(
+  (currentAuthor, nextAuthor) => nextAuthor.author.localeCompare(currentAuthor.author)
+);
 
 const sortedByAscendingRating = [...books].sort((currentRating, nextRating) => {
   return currentRating.rating - nextRating.rating;
@@ -794,10 +795,101 @@ const sortedByAscendingRating = [...books].sort((currentRating, nextRating) => {
 
 const sortedByDescentingRating = [...books].sort((currentRating, nextRating) => {
   return nextRating.rating - currentRating.rating;
-});
-
-*/
+щ});
 
 
+
+/*38. Задача. Сортировка по балансу
+Задание
+Дополни функцию sortByAscendingBalance(users) так, чтобы она возвращала массив пользователей отсортированный по возрастанию их баланса (свойство balance).
+Тесты
+    Объявлена переменная sortByAscendingBalance.
+    Переменной sortByAscendingBalance присвоена стрелочная функция с параметром (users).
+    Значение параметра users не изменяется.
+    Вызов функции с указанным массивом пользователей возвращает новый массив пользователей отсортированный по возрастанию их баланса.
+    Вызов функции со случайными, но валидными аргументами, возвращает правильное значение.
+    Для перебора параметра users использован метод sort().*/
+// Пиши код ниже этой строки
+const sortByAscendingBalance = users => {
+  
+  const userBalance = [...users].sort((currentBalance, nextBalance) => currentBalance.balance - nextBalance.balance);
+  return userBalance;
+  
+};
+// Пиши код выше этой строки
+
+
+
+/*39. Задача. Сортировка по количеству друзей
+Задание
+Дополни функцию sortByDescendingFriendCount(users) так, чтобы она возвращала массив пользователей отсортированный по убыванию количества их друзей (свойство friends).
+Тесты
+    Объявлена переменная sortByDescendingFriendCount.
+    Переменной sortByDescendingFriendCount присвоена стрелочная функция с параметром (users).
+    Значение параметра users не изменяется.
+    Для перебора параметра users использован метод sort().
+    Вызов функции с указанным массивом пользователей возвращает новый массив пользователей отсортированный по убыванию количества их друзей.
+    Вызов функции со случайными, но валидными аргументами, возвращает правильное значение.*/
+// Пиши код ниже этой строки
+const sortByDescendingFriendCount = users => {
+  
+  const countFriend = [...users].sort((currentFriend, nextFriend) => nextFriend.friends.length - currentFriend.friends.length);
+  return countFriend;
+
+};
+// Пиши код выше этой строки
+
+
+
+
+/*40. Задача. Сортировка по имени
+Задание
+Дополни функцию sortByName(users) так, чтобы она возвращала массив пользователей отсортированный по их имени (свойство name) в алфавитном порядке.
+Тесты
+    Объявлена переменная sortByName.
+    Переменной sortByName присвоена стрелочная функция с параметром (users).
+    Значение параметра users не изменяется.
+    Для перебора параметра users использован метод sort().
+    Вызов функции с указанным массивом пользователей возвращает новый массив пользователей отсортированный по имени в алфавитном порядке.
+    Вызов функции со случайными, но валидными аргументами, возвращает правильное значение.*/
+// Пиши код ниже этой строки
+const sortByName = users => {
+  
+  const userName = [...users].sort(
+  (currentName, nextName) => currentName.name.localeCompare(nextName.name));
+  return userName;
+  
+};
+// Пиши код выше этой строки
+
+
+/*41 Цепочки методов (чейнинг, chaining)
+Задание
+Дополни код так, чтобы в переменной names получился массив имён авторов в алфавитном порядке, рейтинг книг которых больше значения переменной MIN_BOOK_RATING.
+Тесты
+    Объявлена переменная books.
+    Значение переменной books это исходный массив объектов.
+    Объявлена переменная MIN_BOOK_RATING.
+    Значение переменной MIN_BOOK_RATING это число 8.
+    Объявлена переменная names.
+    Значение переменной names это массив ['Бернард Корнуэлл', 'Говард Лавкрафт', 'Ли Танит', 'Роберт Шекли'].
+    Нет объявленых переменных кроме books, MIN_BOOK_RATING и names.
+    Используется цепочка методов filter, map, sort.*/
+const books = [
+  { title: 'Последнее королевство', author: 'Бернард Корнуэлл', rating: 8.38 },
+  { title: 'На берегу спокойных вод', author: 'Роберт Шекли', rating: 8.51 },
+  { title: 'Сон смешного человека', author: 'Федор Достоевский', rating: 7.75 },
+  { title: 'Красна как кровь', author: 'Ли Танит', rating: 8.14 },
+  { title: 'Сны В Ведьмином Доме', author: 'Говард Лавкрафт', rating: 8.67 }
+];
+const MIN_BOOK_RATING = 8;
+// Пиши код ниже этой строки
+
+const names = [...books]
+  .sort((currentAuthor, nextAuthor) => currentAuthor.author.localeCompare(nextAuthor.author))
+  .filter(book => book.rating > MIN_BOOK_RATING)
+  .map(book => book.author)
+  
+  console.log(names);
 
 
